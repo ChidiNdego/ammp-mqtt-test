@@ -27,3 +27,31 @@ Cons:
 
 
 ## Task 2: Conceptual Part
+
+| Details            |              |
+|-----------------------|---------------|
+| Programming Language: |  Python 3  |
+
+### What it Does
+
+The `app.py` application aims to connect to AMMP's MQTT staging server, subscribes to a topic, receives a message dumped to JSON and eventually outputs the necessary information about some remote IoT device.
+
+### Setup
+
+* Clone this repository
+* Navigate to repository path
+* Open a terminal to install the necessary dependencies
+
+```
+pip3 install -r requirements.txt
+```
+
+* Run app with the following command-line argument
+
+```
+app.py -n <hostname> -p <port> -t <topic> -u <username> -P <password> --cafile <certification_file>
+```
+
+With the right credentials, you should have an output similar to this below:
+
+![Sample Payload Output](./images/sample_output.png)
