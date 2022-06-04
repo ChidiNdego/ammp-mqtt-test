@@ -28,7 +28,8 @@ Cons:
 
 #### How would you run an acquisition function that subscribes to an MQTT broker? For example would you trigger it periodically via a scheduler, or would you have it running as some sort of continuous "listener" function?
 
-The acquisition function in this case is subjective to the existing system. If there are certain periods of the day that an MQTT broker is expected to provide feedback, then, a scheduler is preferred. This helps reduce operational costs by stopping resources that are not in use and starting resources when needed. However, if the MQTT broker is expected to provide feedback at any instance - not a defined period in a day, a continuous listener function would be preferred. 
+The acquisition function in this case is subjective to the existing system. If there are certain periods of the day that an MQTT broker is expected to provide feedback, then, a scheduler is preferred. This solution helps to reduce operational costs by stopping resources that are not in use and starting resources when needed. 
+However, if the MQTT broker is expected to provide feedback at any instance - not a defined period in a day - then a continuous listener function would be preferred. 
 
 In this case, I'd run a listener function.
 
@@ -40,6 +41,10 @@ EC2 Instance.
 
 
 ## Task 2: Conceptual Part
+
+### Question
+
+#### Write a script in Python 3, to carry out data acquisition from the AMMP MQTT broker, and output the acquired raw data to screen.
 
 | Details            |              |
 |-----------------------|---------------|
