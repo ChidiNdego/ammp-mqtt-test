@@ -12,16 +12,16 @@ def build_argparser():
     """
     parser = ArgumentParser()
     parser.add_argument("-n", "--hostname", type=str,
-                        default="mqtt.stage.ammp.io", help="Broker server hostname.")
+                        default="mqtt.stage.ammp.io", help="Broker server hostname")
     parser.add_argument("-p", "--port", type=int,
                         default=8883, help="Broker server port")
     parser.add_argument("-t", "--topic", type=str,
-                        default="a/b827eb391de9/data", help="Topic to subscribe to.")
+                        default="a/b827eb391de9/data", help="Topic to subscribe to")
     parser.add_argument("-u", "--username", required=True, type=str, default=None,
-                        help="Username for authentication.")
+                        help="Username for authentication")
     parser.add_argument("-P", "--password", required=True, type=str, default=None,
-                        help="Authentication password.")
-    parser.add_argument("-caf", "--cafile", type=str, default="ca-stage.crt", 
+                        help="Authentication password")
+    parser.add_argument("-caf", "--cafile", type=str, default="ca-stage.crt",
                         help="Path to CA certification file")
     parser.add_argument("-ka", "--keep_alive", type=int, default=60,
                         help="Max elapse time interval")    

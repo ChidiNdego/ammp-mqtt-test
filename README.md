@@ -6,24 +6,37 @@
 
 #### What pros and cons do you see with respect to obtaining readings from an MQTT broker, vs getting them via a REST API?
 
-MQTT is a lightweight publish/subscribe architecture that is designed for resource-constrained devices and low-bandwidth setups. It is used a lot for Internet of Things devices, or other machine-to-machine communication.
+MQTT is a lightweight publish/subscribe architecture that is designed for resource-constrained devices and low-bandwidth setups. 
+It is used a lot for Internet of Things devices, or other machine-to-machine communication.
 
 Pros:
-* Designed for resource-constrained devices
-* Best for low-bandwidth setups
-* 
+* Designed for resource-constrained devices with small code footprint.
+* Best for setups with varying level of latency - maximizes available bandwidth.
+* Fast and efficient message delivery system.
+* Quick to implement.
+* Works well for one-to-many simulateneous communcation between devices.
+* Major cloud service providers support MQTT.
 
 Cons:
-* Useful for sending only small portions of data to servers
-* 
+* Useful for sending only small portions of data to servers.
+* Authentication is not encrypted by default. Unfortunately, SSL/TLS which isn't lightweight must be employed for security.
+* It is often difficult to create a globally scalable MQTT network due to its topic structure. As topic tree grows, complexity increases.
+* MQTT may suffer from high latency projects.
+* REST APIs can work with files, objects, and media with actions such as POST, GET, PUT, UPDATE, and DELETE; however, MQTT allows for only publishing and subscribing via a broker with smaller data.
 
 ### Question 2
 
 #### How would you run an acquisition function that subscribes to an MQTT broker? For example would you trigger it periodically via a scheduler, or would you have it running as some sort of continuous "listener" function?
 
+The acquisition function in this case is subjective to the existing system. If there are certain periods of the day that an MQTT broker is expected to provide feedback, then, a scheduler is preferred. This helps reduce operational costs by stopping resources that are not in use and starting resources when needed. However, if the MQTT broker is expected to provide feedback at any instance - not a defined period in a day, a continuous listener function would be preferred. 
+
+In this case, I'd run a listener function.
+
 ### Question 3
 
 #### What underlying AWS service would you run it on? E.g. EC2 vs ECS vs Lambda, etc.
+
+EC2 Instance. 
 
 
 ## Task 2: Conceptual Part
@@ -49,9 +62,35 @@ pip3 install -r requirements.txt
 * Run app with the following command-line argument
 
 ```
-app.py -n <hostname> -p <port> -t <topic> -u <username> -P <password> --cafile <certification_file>
+app.py -n <hostname> -p <port> -t <topic> -u <username> -P <password> -caf <certification_file>
+```
+#### Documentation
+
+```
+usage: app.py [-h] [-n HOSTNAME] [-p PORT] [-t TOPIC] -u USERNAME -P PASSWORD [-caf CERTIFICATION_FILE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n HOSTNAME, --hostname HOSTNAME
+                        AMMP's MQTT Broker server hostname (default = "mqtt.stage.ammp.io").
+  -p PORT, --port PORT
+                        AMMP's MQTT Broker server port (default = 8883).
+  -t TOPIC, --topic TOPIC
+                        Topic to subscribe and listen on (default = "a/b827eb391de9/data").
+  -u USERNAME, --username USERNAME
+                        Username for authentication.
+  -P PASSWORD, --password PASSWORD
+                        Password for authentication.
+  -caf CERTIFICATION_FILE, --caf_file CERTIFICATION_FILE
+                        Path to CA certification file (default = "ca-stage.crt") .
 ```
 
 With the right credentials, you should have an output similar to this below:
 
 ![Sample Payload Output](./images/sample_output.png)
+
+#### Reference
+
+- [MQTT Official Site](https://mqtt.org)
+- [Basics of MQTT](https://www.techtarget.com/iotagenda/definition/MQTT-MQ-Telemetry-Transport)
+- [AWS Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html)
