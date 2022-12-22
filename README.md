@@ -37,7 +37,7 @@ In this case, I'd run a listener function.
 
 #### What underlying AWS service would you run it on? E.g. EC2 vs ECS vs Lambda, etc.
 
-EC2 Instance. 
+Lambda. 
 
 
 ## Task 2: Conceptual Part
