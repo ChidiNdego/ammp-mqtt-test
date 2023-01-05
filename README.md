@@ -1,8 +1,11 @@
-# AMMP MQTT Task: Data Acquisition From MQTT Broker
+# Data Acquisition From MQTT Broker
 
-## Task 1: Conceptual Part
+## Objective
 
-### Question 1
+This project entails connecting to remote IoT devices of oil and gas vessels owned by customers of a Netherland based company. 
+We connect to the company's staging server and extract information about the vessels including process variables. Data transformation is also carried out for easier understanding and interpretation. The final output is dumped in JSON format for subsequent analysis.
+
+### Conceptual Part
 
 #### What pros and cons do you see with respect to obtaining readings from an MQTT broker, vs getting them via a REST API?
 
@@ -24,47 +27,38 @@ Cons:
 * MQTT may suffer from high latency projects.
 * REST APIs can work with files, objects, and media with actions such as POST, GET, PUT, UPDATE, and DELETE; however, MQTT allows for only publishing and subscribing via a broker with smaller data.
 
-### Question 2
-
 #### How would you run an acquisition function that subscribes to an MQTT broker? For example would you trigger it periodically via a scheduler, or would you have it running as some sort of continuous "listener" function?
 
 The acquisition function in this case is subjective to the existing system. If there are certain periods of the day that an MQTT broker is expected to provide feedback, then, a scheduler is preferred. This solution helps to reduce operational costs by stopping resources that are not in use and starting resources when needed. 
 However, if the MQTT broker is expected to provide feedback at any instance - not a defined period in a day - then a continuous listener function would be preferred. 
 
-In this case, I'd run a listener function.
-
-### Question 3
-
 #### What underlying AWS service would you run it on? E.g. EC2 vs ECS vs Lambda, etc.
 
 Lambda. 
 
+### Practical
 
-## Task 2: Conceptual Part
-
-### Question
-
-#### Write a script in Python 3, to carry out data acquisition from the AMMP MQTT broker, and output the acquired raw data to screen.
+#### Write a script in Python 3, to carry out data acquisition from the MQTT broker, and output the acquired raw data to screen.
 
 | Details            |              |
 |-----------------------|---------------|
 | Programming Language: |  Python 3  |
 
-### What it Does
+#### What it Does
 
-The `app.py` application aims to connect to AMMP's MQTT staging server, subscribes to a topic, receives a message dumped to JSON and eventually outputs the necessary information about some remote IoT device.
+The `app.py` application aims to connect to the MQTT staging server, subscribes to a topic, receives a message dumped to JSON and eventually outputs the necessary information from some remote IoT device about an oil and gas vessel.
 
-### Setup
+#### Setup
 
 * Clone this repository
-* Navigate to repository path
-* Open a terminal to install the necessary dependencies
+* In your terminal, navigate to the repository path
+* Install the necessary dependencies:
 
 ```
 pip3 install -r requirements.txt
 ```
 
-* Run app with the following command-line argument
+* Run app with the following command-line argument:
 
 ```
 app.py -n <hostname> -p <port> -t <topic> -u <username> -P <password> -caf <certification_file>
@@ -94,7 +88,7 @@ With the right credentials, you should have an output similar to this below:
 
 ![Sample Payload Output](./images/sample_output.png)
 
-#### Reference
+### Reference
 
 - [MQTT Official Site](https://mqtt.org)
 - [Basics of MQTT](https://www.techtarget.com/iotagenda/definition/MQTT-MQ-Telemetry-Transport)
