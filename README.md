@@ -2,6 +2,8 @@
 
 ## Objective
 
+![MQTT Broker Image](./images/mqtt.png)
+
 This project entails connecting to remote IoT devices of oil and gas vessels owned by customers of a Netherland based company. 
 We connect to the company's staging server and extract information about the vessels including process variables. Data transformation is also carried out for easier understanding and interpretation. The final output is dumped in JSON format for subsequent analysis.
 
