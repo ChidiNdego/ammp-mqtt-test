@@ -34,10 +34,6 @@ Cons:
 The acquisition function in this case is subjective to the existing system. If there are certain periods of the day that an MQTT broker is expected to provide feedback, then, a scheduler is preferred. This solution helps to reduce operational costs by stopping resources that are not in use and starting resources when needed. 
 However, if the MQTT broker is expected to provide feedback at any instance - not a defined period in a day - then a continuous listener function would be preferred. 
 
-#### What underlying AWS service would you run it on? E.g. EC2 vs ECS vs Lambda, etc.
-
-Lambda. 
-
 ### Practical
 
 #### Write a script in Python 3, to carry out data acquisition from the MQTT broker, and output the acquired raw data to screen.
